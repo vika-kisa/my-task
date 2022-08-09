@@ -1,6 +1,5 @@
 .App {
   /* text-align: center; */
-  color: palevioletred;
   padding: 20px;
   background-color: #19191a;
   max-height: 100vh;
@@ -53,4 +52,5 @@
   overflow-x: hidden;
   width: 50%;
   gap: 10px;
+  color: palevioletred;
 }
