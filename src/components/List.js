@@ -4,7 +4,7 @@ const List = ({data}) => (
             data.map (
                 (el,i) => (
                 <div key={i}>
-                    {el}
+                    {el.name}
                 </div>
                 )
             )
