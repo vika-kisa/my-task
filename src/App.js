@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import List from './components/List';
 
@@ -8,8 +7,8 @@ const stations = [25,14,58,87,56,95,87,2,3,57,69,74,15,24,78,76,73,20,80,90,70,1
 
 const App = () => (
     <div className="App">
-        <List data = {networks} />
-        <List data = {stations} />
+        <List data={networks} />
+        <List data={stations} />
     </div>
 );
 

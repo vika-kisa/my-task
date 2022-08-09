@@ -1,5 +1,5 @@
-const List = ({data}) => {
-    <div className="list">
+const List = ({data}) => (
+    <div className="list__data">
         {
             data.map (
                 (el,i) => (
@@ -11,7 +11,7 @@ const List = ({data}) => {
         }
     </div>  
 
-}
+);
 
 
 export default List;

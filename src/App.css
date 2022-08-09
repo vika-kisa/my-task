@@ -4,6 +4,7 @@
   padding: 20px;
   background-color: #19191a;
   max-height: 100vh;
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   font-size: calc(10px + 2vmin);
@@ -45,7 +46,7 @@
   }
 }
 
-.list {
+.list__data {
   display: flex;
   flex-direction: column;
   overflow: auto;
