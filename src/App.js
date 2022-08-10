@@ -25,8 +25,8 @@ const App = () => {
             {
                 networks.length === 0 ? "Loading.." : (
                     <>
-                        <List data={networks} nameElement='name' />
-                        <List data={stations} nameElement='id' />
+                        <List data={networks} dataKey='name' />
+                        <List data={stations} dataKey='id' />
                     </>
                 )
 

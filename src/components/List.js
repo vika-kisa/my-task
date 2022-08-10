@@ -1,10 +1,10 @@
-const List = ({data,nameElement}) => (
+const List = ({data, dataKey}) => (
     <div className="list__data">
         {
             data.map (
                 (el,i) => (
                 <div key={i}>
-                    {el[nameElement]}
+                    {el[dataKey]}
                 </div>
                 )
             )
