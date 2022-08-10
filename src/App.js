@@ -14,8 +14,8 @@ const App = () => {
     useEffect ( () => {
         axios.get(url)
         .then(response => {
-            setStations (response.data.networks);
-            setNetworks (response.data.networks);
+            setStations(response.data.networks);
+            setNetworks(response.data.networks);
         })
     }, []);
     
