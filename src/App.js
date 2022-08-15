@@ -1,35 +1,42 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import {useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 import List from './components/List';
+import {getNetworksRequest, getStationsRequest} from './api';
+import { setNetworks, setStations} from './store/slices';
 
 import './App.css';
 
-const url = 'http://api.citybik.es/v2/networks';
 
 const App = () => {
-    const [networks, setNetworks] = useState([]);
-    const [stations, setStations] = useState([]);
+    const networks = useSelector(state => state.networks);
+    const stations = useSelector(state => state.stations);
+    const dispatch = useDispatch();
+
 
     useEffect ( () => {
-        axios.get(url)
+        getNetworksRequest()
         .then(response => {
-            setStations(response.data.networks);
-            setNetworks(response.data.networks);
-        })
+            dispatch(setNetworks(response.data.networks));
+        });
     }, []);
+
+    const getStations = (id) => {
+        getStationsRequest(id)
+        .then(response => {
+            dispatch(setStations(response.data.network.stations));
+        });
+    };
     
 
     return (
         <div className="App">
             {
-                networks.length === 0 ? "Loading.." : (
-                    <>
-                        <List data={networks} dataKey='name' />
-                        <List data={stations} dataKey='id' />
-                    </>
-                )
-
+                <>
+                    <List data={networks} dataKey='name' onClickElement={getStations} name='Networks'/>
+                    <List data={stations} dataKey='name' name='Stations'/>
+                </>
             }
         </div>
     );

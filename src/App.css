@@ -1,8 +1,8 @@
 .App {
   /* text-align: center; */
   padding: 20px;
-  background-color: #19191a;
-  max-height: 100vh;
+  background-color: #242424;
+  height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: row;
@@ -52,6 +52,13 @@
   overflow-x: hidden;
   width: 50%;
   gap: 10px;
-  color: palevioletred;
-  text-transform: capitalize;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: rgb(209, 62, 223);
+  cursor: pointer;
+}
+
+.loading {
+  letter-spacing: 1.5px;
+  color: rgb(209, 62, 223);
 }
