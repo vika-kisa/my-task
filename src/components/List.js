@@ -1,13 +1,26 @@
+import NonActiveLike from '../likeNonActive.svg';
+import ActiveLike from '../likeActive.svg';
+
 const List = ({data, dataKey, onClickElement, name}) => (
     data.length !== 0 ? (
     <div className="list__data">
         {
             data.map (
-                (el,i) => (
-                <div key={i} onClick={() => onClickElement(el.id)}>
-                    {el[dataKey]}
+                (el,i) => {
+                let isActive = false; 
+                return (
+                <div key={i} onClick={() => onClickElement(el.id) }>
+                    {name === 'Stations' && (
+                    <img 
+                    src={isActive ? ActiveLike : NonActiveLike} 
+                    className="like"
+                    onClick={() => isActive = !isActive}>
+                    </img> 
+                    )} 
+                    {el[dataKey]} 
                 </div>
                 )
+                }
             )
         }
     </div>  
@@ -17,8 +30,6 @@ const List = ({data, dataKey, onClickElement, name}) => (
             `${name} are loading......`
         }
     </div>
-
-
 );
 
 

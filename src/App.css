@@ -1,7 +1,7 @@
 .App {
   /* text-align: center; */
   padding: 20px;
-  background-color: #242424;
+  background-color: #cbc7c7;
   height: 100vh;
   overflow: hidden;
   display: flex;
@@ -54,11 +54,16 @@
   gap: 10px;
   font-weight: 600;
   letter-spacing: 3px;
-  color: rgb(209, 62, 223);
+  color: rgb(35, 11, 37);
   cursor: pointer;
 }
 
 .loading {
   letter-spacing: 1.5px;
   color: rgb(209, 62, 223);
+  cursor: auto;
+}
+
+.like {
+  margin-right: 20px;
 }
