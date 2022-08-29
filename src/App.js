@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 
@@ -14,6 +14,9 @@ const App = () => {
     const stations = useSelector(state => state.stations);
     const dispatch = useDispatch();
 
+    const [likes, setLikes] = useState( 
+    JSON.parse(localStorage.getItem('likes'))
+    );
 
     useEffect ( () => {
         getNetworksRequest()
@@ -22,11 +25,23 @@ const App = () => {
         });
     }, []);
 
-    const getStations = (id) => {
-        getStationsRequest(id)
+    const getStations = (network) => {
+        getStationsRequest(network.id)
         .then(response => {
             dispatch(setStations(response.data.network.stations));
         });
+    };
+
+    const toggleLike = (station) => {
+        let newLikesArray = [...likes];
+        if (newLikesArray.includes(station.id)) {
+            newLikesArray = likes.filter(
+                (like) => like !== station.id)
+        } else {
+            newLikesArray = [...likes, station.id]
+        }
+        setLikes(newLikesArray);
+        localStorage.setItem('likes', JSON.stringify(newLikesArray));
     };
     
 
@@ -34,8 +49,17 @@ const App = () => {
         <div className="App">
             {
                 <>
-                    <List data={networks} dataKey='name' onClickElement={getStations} name='Networks'/>
-                    <List data={stations} dataKey='name' name='Stations'/>
+                    <List
+                    data={networks}
+                    onClickElement={getStations}
+                    name='Networks'
+                    />
+                    <List
+                    data={stations}
+                    name='Stations'
+                    onClickElement={toggleLike}
+                    likes={likes}
+                    />
                 </>
             }
         </div>
