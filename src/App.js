@@ -1,12 +1,13 @@
 import {useEffect, useState} from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 
 import List from './components/List';
 import {getNetworksRequest, getStationsRequest} from './api';
-import { setNetworks, setStations} from './store/slices';
+import {setNetworks, setStations} from './store/slices';
 
 import './App.css';
+import InfoAboutStation from './components/InfoAboutStation';
 
 
 const App = () => {
@@ -47,8 +48,11 @@ const App = () => {
 
     return (
         <div className="App">
+            <InfoAboutStation
+            data={stations}
+            />
             {
-                <>
+                <div className='app__list'>
                     <List
                     data={networks}
                     onClickElement={getStations}
@@ -60,7 +64,7 @@ const App = () => {
                     onClickElement={toggleLike}
                     likes={likes}
                     />
-                </>
+                </div>
             }
         </div>
     );
