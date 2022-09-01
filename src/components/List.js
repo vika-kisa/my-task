@@ -8,18 +8,17 @@ const List = ({data, onClickElement, name, likes}) => (
             data.map (
                 (el,i) => {
                 return (
-                <div key={i} onClick={() => onClickElement(el)}>
-                    {name === 'Stations' && (
-                    <img 
-                    src={likes.includes(el.id) ? ActiveLike : NonActiveLike} 
-                    className="like"
-                    alt='like'>
-                    </img> 
-                    )} 
-                    {el.name} 
-                </div>
-                )
-                }
+                    <div key={i} onClick={() => onClickElement(el)}>
+                        {name === 'Stations' && (
+                            <img 
+                                src={likes.includes(el.id) ? ActiveLike : NonActiveLike} 
+                                className="like"
+                                alt='like'>
+                            </img> 
+                        )} 
+                        {el.name} 
+                    </div>
+                )}
             )
         }
     </div>  

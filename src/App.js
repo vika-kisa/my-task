@@ -1,36 +1,38 @@
 import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-
 import List from './components/List';
 import {getNetworksRequest, getStationsRequest} from './api';
-import {setNetworks, setStations} from './store/slices';
+import {setNetworks, setSelectedNetworkName, setStations} from './store/slices';
 
 import './App.css';
-import InfoAboutStation from './components/InfoAboutStation';
+import InfoAboutStations from './components/InfoAboutStations';
 
 
 const App = () => {
     const networks = useSelector(state => state.networks);
     const stations = useSelector(state => state.stations);
+    const selectedNetworkName = useSelector(state => state.selectedNetworkName)
     const dispatch = useDispatch();
 
     const [likes, setLikes] = useState( 
-    JSON.parse(localStorage.getItem('likes'))
+        JSON.parse(localStorage.getItem('likes'))
     );
 
-    useEffect ( () => {
+    useEffect (() => {
         getNetworksRequest()
-        .then(response => {
-            dispatch(setNetworks(response.data.networks));
-        });
+            .then(response => {
+                dispatch(setNetworks(response.data.networks));
+            });
     }, []);
 
-    const getStations = (network) => {
+    const onClickNetwork = (network) => {
+        dispatch(setSelectedNetworkName(network.name))
+
         getStationsRequest(network.id)
-        .then(response => {
-            dispatch(setStations(response.data.network.stations));
-        });
+            .then(response => {
+                dispatch(setStations(response.data.network.stations));
+            });
     };
 
     const toggleLike = (station) => {
@@ -48,21 +50,22 @@ const App = () => {
 
     return (
         <div className="App">
-            <InfoAboutStation
-            data={stations}
+            <InfoAboutStations
+                data={stations}
+                name={selectedNetworkName}
             />
             {
                 <div className='app__list'>
                     <List
-                    data={networks}
-                    onClickElement={getStations}
-                    name='Networks'
+                        data={networks}
+                        onClickElement={onClickNetwork}
+                        name='Networks'
                     />
                     <List
-                    data={stations}
-                    name='Stations'
-                    onClickElement={toggleLike}
-                    likes={likes}
+                        data={stations}
+                        name='Stations'
+                        onClickElement={toggleLike}
+                        likes={likes}
                     />
                 </div>
             }
