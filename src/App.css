@@ -1,11 +1,11 @@
 .App {
   /* text-align: center; */
   padding: 20px;
-  background-color: #19191a;
-  max-height: 100vh;
+  background-color: #cbc7c7;
+  height: 100vh;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   font-size: calc(10px + 2vmin);
   gap: 25px;
 }
@@ -52,6 +52,32 @@
   overflow-x: hidden;
   width: 50%;
   gap: 10px;
-  color: palevioletred;
-  text-transform: capitalize;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: rgb(35, 11, 37);
+  cursor: pointer;
+}
+
+.loading {
+  letter-spacing: 1.5px;
+  color: rgb(209, 62, 223);
+  cursor: auto;
+}
+
+.like {
+  margin-right: 20px;
+}
+
+.info__stations {
+  display: flex;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: rgb(76, 20, 81);
+  justify-content: space-around;
+}
+
+.app__list {
+  display: flex;
+  overflow: auto;
+  gap: 20px;
 }
